@@ -17,6 +17,7 @@ target/
 .gitattributes
 mvnw
 mvnw.cmd
+test/
 .out/
 .mvn/
 .idea/
