@@ -1,5 +1,6 @@
 package org.example.springboot.controller;
 
+import jakarta.validation.Valid;
 import org.example.springboot.dto.OrderRequestDto;
 import org.example.springboot.dto.OrderResponseDto;
 import org.example.springboot.service.OrderService;
@@ -19,7 +20,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderResponseDto> createOrder(@RequestBody OrderRequestDto request) {
+    public ResponseEntity<OrderResponseDto> createOrder(@Valid @RequestBody OrderRequestDto request) {
         OrderResponseDto orderResponseDto = orderService.save(request);
         return ResponseEntity.ok().body(orderResponseDto);
     }
@@ -31,7 +32,7 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderResponseDto> update(@PathVariable("id") Long id, @RequestBody OrderRequestDto requestDto) {
+    public ResponseEntity<OrderResponseDto> update(@PathVariable("id") Long id, @Valid @RequestBody OrderRequestDto requestDto) {
         OrderResponseDto orderResponseDto = orderService.update(id, requestDto);
         return ResponseEntity.ok().body(orderResponseDto);
     }
